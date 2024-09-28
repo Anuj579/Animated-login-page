@@ -10,57 +10,88 @@
 
 <body>
     <main class="container">
+        <div class="content-div">
+            <!-- Logo div -->
+            <div class="sm-logo-div"><img src="assets/logo.svg" width="60px" alt="logo-img"></div>
 
-        <!-- Logo div -->
-        <div class="logo-div"><img src="assets/logo.svg" width="60px" alt=""></div>
+            <div class="top-div">
+                <div class="lg-logo-div">
+                    <img src="assets/logo.svg" width="55" alt="logo-img">
+                    <div style="text-align: left;">
+                        <h3>REGIONS</h3>
+                        <p>Mortgage</p>
+                    </div>
+                </div>
+                <div class="lg-enroll-btn-div">
+                    <p>Are you a new customer?</p>
+                    <button>Enroll Now</button>
+                    <div class="dropdown">
+                        <h4 class="dropdown-title">Enroll now to:</h4>
+                        <p><img src="assets/checkmark.svg" class="checkmark-img" alt="checkmark-img">Access your loans online</p>
+                        <p><img src="assets/checkmark.svg" class="checkmark-img" alt="checkmark-img">Pay your mortgage online</p>
+                        <p><img src="assets/checkmark.svg" class="checkmark-img" alt="checkmark-img">View your mortgage statements</p>
+                    </div>
+                </div>
+            </div>
 
-        <!-- Heading div -->
-        <div class="heading-div">
-            <h1>Welcome Back</h1>
-            <p>Sign in to your Regions MyMortgage account.</p>
-        </div>
+            <div class="heading-form-div">
+                <!-- Heading div -->
+                <div class="heading-div">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to your Regions MyMortgage account.</p>
+                </div>
 
-        <!-- Form div -->
-        <div class="form-div">
-            <form>
-                <div class="online-id-div">
-                    <label for="id">Online ID</label>
-                    <input type="text">
+                <!-- Form div -->
+                <div class="form-div">
+                    <form>
+                        <div class="online-id-div">
+                            <input type="text" class="id-input" autocomplete="off" required>
+                            <label for="id" class="id-label">Online ID</label>
+                        </div>
+                        <div class="pwd-div">
+                            <input type="password" class="pwd-input" autocomplete="off" required>
+                            <label for="password" class="pwd-label">Password</label>
+                        </div>
+                        <div class="checkbox-div">
+                            <div class="custom-checkbox">
+                                <input type="checkbox" name="" id="">
+                                <div class="checkmark"></div>
+                            </div>
+                            <p>Remember me</p>
+                        </div>
+                        <button type="button">Login</button>
+                        <div class="forgot-div">
+                            <a href="#">Forgot Online ID?</a>
+                            <p style="color: #5D913C; font-size: 12px;">•</p>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="pwd-div">
-                    <label for="password">Password</label>
-                    <input type="password" name="" id="">
-                </div>
-                <div class="checkbox-div">
-                    <input type="checkbox" name="" id="">
-                    <p>Remember me</p>
-                </div>
-                <button>Login</button>
-                <div>
-                    <a href="#">Forgot Online ID?</a>
+            </div>
+
+            <div class="sm-enroll-btn-div">
+                <p>Are you a new customer?</p>
+                <button>Enroll Now</button>
+            </div>
+
+            <!-- Footer div -->
+            <div class="footer-div">
+                <div class="link-div">
+                    <a href="#"><img src="assets/house-icon.svg" width="17px"
+                            style="margin-right: 12px; transform: translateY(2px);" alt="">Equal Housing
+                        Lender</a>
                     <p>•</p>
-                    <a href="#">Forgot Password?</a>
+                    <a href="#">Member FDIC</a>
                 </div>
-            </form>
+
+                <div class="copyright-div">
+                    <p>&copy;2024 Regions Financial Corportaion. All Right Reserved.</p>
+                    <a href="#" style="color: #5D913C">1(800) REGIONS</a>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <p>Are you a new customer?</p>
-            <button>Enroll Now</button>
-        </div>
-
-        <!-- Footer div -->
-        <div>
-            <div>
-                <a href="#">Equal Housing Lender</a> 
-                <p>•</p>
-                <a href="#">Member FDIC</a>
-            </div>
-
-            <div>
-                <p>&copy;2024 Regions Financial Corportaion. All Right Reserved.</p>
-                <a href="#">1(800) REGIONS</a>
-            </div>
+        <div class="img-div">
         </div>
     </main>
 </body>
