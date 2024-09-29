@@ -50,9 +50,10 @@
 .pwd-div>.pwd-label {
     position: absolute;
     left: .8rem;
-    transform: translateY(.75rem);
+    transform: translateY(.8rem);
     color: #727272;
     transition: all 150ms;
+    z-index:0;
 }
 
 .online-id-div>input,
@@ -61,6 +62,8 @@
     border: 1.5px solid #d3d3d3;
     border-radius: 8px;
     font-size: 1rem;
+    background: transparent;
+    z-index: 1;
 }
 
 .online-id-div>input:focus,
