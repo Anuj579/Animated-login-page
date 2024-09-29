@@ -8,6 +8,7 @@
 .container {
     text-align: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 .content-div {
@@ -81,6 +82,12 @@
     transform: translateY(.2rem) translateX(-.45rem) scale(0.75);
 }
 
+.id-input:disabled~.id-label,
+.pwd-input:disabled~.pwd-label {
+    color: #727272;
+    transform: translateY(.2rem) translateX(-.45rem) scale(0.75);
+}
+
 .id-input:not(:focus)~.id-label,
 .pwd-input:not(:focus)~.pwd-label {
     color: #727272;
@@ -142,7 +149,7 @@
     transform: rotate(40deg);
 }
 
-.form-div>form>button {
+#login-btn {
     font-size: 1rem;
     font-weight: 500;
     color: #fff;
@@ -151,15 +158,48 @@
     border: none;
     border-radius: 22px;
     transition: all .1s ease-out;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
-.form-div>form>button:disabled {
+#login-btn:disabled {
     background: #CFD1D0;
 }
 
-.form-div>form>button:active {
+#login-btn:not(:disabled):active {
     scale: 0.98;
     background-color: #548136;
+}
+
+.loader {
+    position: absolute;
+    top: 32%;
+    left: -5%;
+    opacity: 0;
+    border: 2.5px solid rgba(187, 187, 187, 0.596);
+    border-top: 2.5px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s cubic-bezier(0.75, 0.2, 0.165, .8) infinite;
+    transition: all .3s ease;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.login-text {
+    position: relative;
+    left: 0;
+    transition: all .3s ease;
 }
 
 .form-div .forgot-div {
@@ -187,12 +227,14 @@
     gap: 10px;
 }
 
-.sm-enroll-btn-div>p, .lg-enroll-btn-div>p {
+.sm-enroll-btn-div>p,
+.lg-enroll-btn-div>p {
     color: #525252;
     font-size: 15px;
 }
 
-.sm-enroll-btn-div>button, .lg-enroll-btn-div>button {
+.sm-enroll-btn-div>button,
+.lg-enroll-btn-div>button {
     background: #fff;
     color: #5D913C;
     font-weight: 500;
@@ -226,26 +268,14 @@
     column-gap: 1rem;
 }
 
-.img-div, .top-div {
+.img-div,
+.top-div {
     display: none;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 992px) {
     .sm-enroll-btn-div {
         display: none;
-    }
-
-    .content-div {
-        width: 50vw;
-    }
-
-    .img-div {
-        display: block;
-        width: 50vw;
-        background-image: url('https://images.unsplash.com/photo-1519227355453-8f982e425321?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-        background-size: cover;
-        background-position: center;
-        border-radius: 20px;
     }
 
     .container {
@@ -254,35 +284,180 @@
         gap: 1.2rem;
         max-width: 1500px;
         margin: 0 auto;
+        position: relative;
     }
 
     .content-div {
         padding: .4rem 1rem;
         align-items: center;
+        overflow: hidden;
+        width: 0%;
+        animation: contentDivAnim 1s forwards ease-in 2s;
     }
 
-    .sm-logo-div{
+    @keyframes contentDivAnim {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+            width: 50%;
+        }
+    }
+
+    .img-div {
+        display: flex;
+        width: 100%;
+        background-image: url('https://images.unsplash.com/photo-1519227355453-8f982e425321?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        transform: scale(0);
+        opacity: 0;
+        animation: expandImage 4s forwards ease-in;
+    }
+
+    /* Keyframes for the image */
+    @keyframes expandImage {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+            width: 100%;
+        }
+
+        30%,
+        50% {
+            transform: scale(1);
+            opacity: 1;
+            width: 100%;
+        }
+
+        80%,
+        100% {
+            transform: scale(1);
+            opacity: 1;
+            width: 50%;
+        }
+    }
+
+    .img-animation {
+        opacity: 1;
+        width: 50%;
+        transform: scale(1);
+        animation: hideImage 1s forwards ease-in 4s;
+    }
+
+    @keyframes hideImage {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        10% {
+            transform: scale(1.02);
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(0);
+            opacity: 0;
+        }
+    }
+
+    .sm-logo-div {
         display: none;
     }
 
-    .top-div{
+    .top-div {
         display: flex;
         width: 100%;
         justify-content: space-between;
         position: relative;
     }
 
-    .lg-logo-div{
+    .lg-logo-div {
         display: flex;
         gap: 8px;
     }
 
-    .lg-logo-div h3{
+    .lg-logo {
+        background-color: #fff;
+        z-index: 20;
+        transform: scale(0);
+        animation: logoAppear 1s forwards ease-in 3s;
+    }
+
+    /* Keyframes for the logo */
+    @keyframes logoAppear {
+        0% {
+            transform: scale(0);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .logo-animation {
+        transform: scale(1);
+        animation: logoDisappear .8s forwards ease-in 4s;
+    }
+
+    @keyframes logoDisappear {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(0);
+        }
+    }
+
+    .title {
+        opacity: 0;
+        transform: translateX(-50px);
+        animation: textFadeIn .5s forwards ease-in-out 4s;
+    }
+
+    /* Keyframes for the text */
+    @keyframes textFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .title-animation {
+        opacity: 1;
+        transform: translateX(0);
+        animation: textFadeOut .5s forwards ease-in-out 3s;
+    }
+
+    @keyframes textFadeOut {
+        0% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateX(-50px);
+            display: none;
+        }
+    }
+
+    .lg-logo-div h3 {
         font-weight: 600;
         margin-bottom: -2px;
     }
 
-    .lg-logo-div p{
+    .lg-logo-div p {
         font-weight: 500;
         font-size: 15px;
     }
@@ -292,37 +467,79 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
+        opacity: 0;
+        transform: translateX(50px);
+        animation: buttonFadeIn .5s forwards ease-in-out 4s;
     }
 
-    .dropdown{
+    /* Keyframes for enroll now btn */
+    @keyframes buttonFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .enroll-btn-div-animation {
+        opacity: 1;
+        transform: translateX(0);
+        animation: buttonSlideDown .5s forwards ease-in-out 3s;
+    }
+
+    @keyframes buttonSlideDown {
+        0% {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+
+        100% {
+            opacity: 0;
+            display: none;
+            transform: translateY(50px);
+        }
+    }
+
+    .dropdown {
         background: #121919;
         position: absolute;
         top: 135%;
         right: 1%;
         padding: 1.2rem;
         text-align: left;
-        display: flex;
+        /* display: flex; */
         flex-direction: column;
         gap: 6px;
         border-radius: 10px;
         opacity: 0;
+        z-index: 1;
+        display: none;
     }
-    
-    .lg-enroll-btn-div> button:hover ~ .dropdown{
+
+    .lg-enroll-btn-div>button:hover~.dropdown {
         opacity: 1;
-        animation: dropdownAnim .5s ease;
+        display: flex;
+        animation: dropdownAnim .5s forwards ease;
     }
 
     @keyframes dropdownAnim {
-        0%{
+        0% {
             opacity: 0;
+            display: none;
             transform: translateY(-8px);
-        }100%{
+        }
+
+        100% {
             opacity: 1;
+            display: flex;
         }
     }
 
-    .dropdown::before{
+    .dropdown::before {
         content: "";
         position: absolute;
         top: -4px;
@@ -332,37 +549,111 @@
         transform: rotate(45deg);
     }
 
-    .dropdown-title{
+    .dropdown-title {
         font-weight: 600;
         color: #fff;
         font-size: .85rem;
     }
 
-    .checkmark-img{
+    .checkmark-img {
         width: 20px;
         margin-right: 5px;
         transform: translateY(5px);
     }
 
-    .dropdown>p{
+    .dropdown>p {
         color: #cccccc;
         font-size: .8rem;
     }
 
-    .heading-div>h1{
+    .heading-div>h1 {
         font-size: 2.5rem;
     }
-    
-    .form-div{
+
+    .form-div {
         width: 100%;
         max-width: 400px;
     }
 
-    .form-div>form{
+    .form-div>form {
         width: 100%;
     }
 
-    .heading-form-div{
+    .heading-form-div {
         margin: auto 0;
+        opacity: 0;
+        transform: translateY(100px);
+        animation: formSlideUp .5s forwards ease-in 4.5s;
+        z-index: -1;
+    }
+
+    /* Keyframes for form */
+    @keyframes formSlideUp {
+        0% {
+            opacity: 0;
+            transform: translateY(80px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .heading-form-animation {
+        opacity: 1;
+        transform: translateY(0);
+        animation: formSlideDown .5s forwards ease-in 2s;
+    }
+
+    @keyframes formSlideDown {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(80px);
+            display: none;
+        }
+    }
+
+    .footer-div {
+        opacity: 0;
+        transform: translateY(50px);
+        animation: footerSlideUp .5s forwards ease-in-out 4s;
+    }
+
+    /* Keyframes for footer */
+    @keyframes footerSlideUp {
+        0% {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .footer-animation {
+        opacity: 1;
+        transform: translateY(0);
+        animation: footerSlideDown .5s forwards ease-in-out 2s;
+    }
+
+    @keyframes footerSlideDown {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(50px);
+            display: none;
+        }
     }
 }

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/1381/PNG/512/preferencessystemlogin_93553.png"
+        type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,8 +18,10 @@
 
             <div class="top-div">
                 <div class="lg-logo-div">
-                    <img src="assets/logo.svg" width="55" alt="logo-img">
-                    <div style="text-align: left;">
+                    <div class="lg-logo">
+                        <img src="assets/logo.svg" width="55" alt="logo-img">
+                    </div>
+                    <div class="title" style="text-align: left;">
                         <h3>REGIONS</h3>
                         <p>Mortgage</p>
                     </div>
@@ -27,9 +31,12 @@
                     <button>Enroll Now</button>
                     <div class="dropdown">
                         <h4 class="dropdown-title">Enroll now to:</h4>
-                        <p><img src="assets/checkmark.svg" class="checkmark-img" alt="checkmark-img">Access your loans online</p>
-                        <p><img src="assets/checkmark.svg" class="checkmark-img" alt="checkmark-img">Pay your mortgage online</p>
-                        <p><img src="assets/checkmark.svg" class="checkmark-img" alt="checkmark-img">View your mortgage statements</p>
+                        <p><img src="assets/checkmark.svg" class="checkmark-img" alt="checkmark-img">Access your loans
+                            online</p>
+                        <p><img src="assets/checkmark.svg" class="checkmark-img" alt="checkmark-img">Pay your mortgage
+                            online</p>
+                        <p><img src="assets/checkmark.svg" class="checkmark-img" alt="checkmark-img">View your mortgage
+                            statements</p>
                     </div>
                 </div>
             </div>
@@ -45,11 +52,11 @@
                 <div class="form-div">
                     <form>
                         <div class="online-id-div">
-                            <input type="text" class="id-input" autocomplete="off" required>
+                            <input type="text" class="id-input" autocomplete="off" id="id-input" required>
                             <label for="id" class="id-label">Online ID</label>
                         </div>
                         <div class="pwd-div">
-                            <input type="password" class="pwd-input" autocomplete="off" required>
+                            <input type="password" class="pwd-input" autocomplete="off" id="password-input" required>
                             <label for="password" class="pwd-label">Password</label>
                         </div>
                         <div class="checkbox-div">
@@ -59,7 +66,11 @@
                             </div>
                             <p>Remember me</p>
                         </div>
-                        <button type="button">Login</button>
+                        <button type="button" id="login-btn" disabled>
+                            <div class="loader"></div>
+                            <span class="login-text">Login</span>
+                        </button>
+
                         <div class="forgot-div">
                             <a href="#">Forgot Online ID?</a>
                             <p style="color: #5D913C; font-size: 12px;">•</p>
@@ -95,5 +106,6 @@
         </div>
     </main>
 </body>
+<script src="script.js"></script>
 
 </html>
